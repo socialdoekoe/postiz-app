@@ -28,7 +28,10 @@ export class TemporalRegister implements OnModuleInit {
         namespace: process.env.TEMPORAL_NAMESPACE || 'default',
         searchAttributes: missingAttributes.reduce((all, current) => {
           // @ts-ignore
-          all[current] = 1;
+          // 2 = Keyword type (exact-match indexed). IDs zoals organizationId/postId
+          // horen Keyword te zijn, niet Text. Text-slots in SQL visibility zijn op 3
+          // beperkt en al gebruikt door system defaults.
+          all[current] = 2;
           return all;
         }, {}),
       });
