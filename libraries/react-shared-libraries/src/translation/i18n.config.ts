@@ -1,6 +1,7 @@
 export const fallbackLng = 'en';
 export const languages = [
   fallbackLng,
+  'nl',
   'he',
   'ru',
   'zh',
